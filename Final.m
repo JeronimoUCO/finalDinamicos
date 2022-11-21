@@ -1,6 +1,6 @@
 clear all;
 
-global n = 50;
+global n = 10;
 global j = 1;
 global mapa = zeros(50, 50);
 global alpha1 = 5;
@@ -274,4 +274,16 @@ while ii < n
     ii++
     poblacionPresas
     poblacionDepredadores
+    historiaDepredadores(ii ,:) = poblacionDepredadores;
+    historiaPresas(ii ,:) = poblacionPresas;
+    anio(ii,1) = ii;
+
 endwhile
+
+% Graficar la poblacion de pajaros hembras
+plot(anio,historiaDepredadores(:,1),'--',anio,historiaPresas(:,1),':')
+grid on
+xlabel('Año')
+ylabel('Población')
+legend('Población depredadores ','Poblacion presas')
+
